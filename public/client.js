@@ -1,8 +1,8 @@
 const socket=io('/')
 const vidgrid=document.getElementById('video-grid')
 const mypeer=new Peer(undefined,{
-    host:'/',
-    port:3001
+    host:'https://webrtc-calling-by-shashank.herokuapp.com/',
+    port:443
 })
 const peers={}
 const myvideo=document.createElement('video')
