@@ -21,12 +21,13 @@ io.on('connection', (socket) => {
     socket.on('join-room', (roomId, userId) => {
       socket.join(roomId)
       socket.broadcast.to(roomId).emit('user-connected', userId)
+      socket.on('disconnect',()=>{
+        socket.broadcast.to(roomId).emit('user-disconnected', userId)
+      })
      
     })
 
-    socket.on('disconnect',()=>{
-      socket.broadcast.to(roomId).emit('user-disconnected', userId)
-    })
+    
   })
 server.listen(3000,()=>{
     console.log('server listening at http://localhost:3000')
