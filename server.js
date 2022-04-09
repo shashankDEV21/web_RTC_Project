@@ -3,6 +3,7 @@ const req = require('express/lib/request')
 const app=express()
 const server =require('http').Server(app)
 const io=require('socket.io')(server)
+const port = process.env.PORT||8000
 const { v4: uuidV4 } = require('uuid')
 
 app.set('view engine','ejs')
@@ -29,6 +30,6 @@ io.on('connection', (socket) => {
 
     
   })
-server.listen(3000,()=>{
-    console.log('server listening at http://localhost:3000')
+server.listen(port,()=>{
+    console.log(`server listening at http://localhost:${port}`)
 })
